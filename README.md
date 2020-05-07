@@ -1,5 +1,5 @@
 # DoshLane
-Python base alternative to DashLane
+Python based alternative to DashLane
 
 # Backend
 - Database : SQLite
