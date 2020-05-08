@@ -93,5 +93,3 @@ def update_user(Usermain, Passmain, New, Website):
     else:
         print('Error invalid password')
         succes = False
-
-read_user_info('Toto')
