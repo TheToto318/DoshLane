@@ -1,0 +1,531 @@
+/* General */
+*:root {
+  --transition-speed: 500ms;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.smooth-bg-change {
+  transition: background-color 500ms ease-in, color 750ms ease-in;
+}
+
+.smooth-nav-change {
+  transition: width 600ms ease, background-color 500ms ease-in, color 750ms ease-in;
+}
+
+/* Pages Content */
+main {
+  padding: 2vmin;
+  position: relative;
+}
+
+main section {
+  display: none;
+}
+
+main section.visible {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Home */
+.home {
+  padding-bottom: 10vh;
+}
+
+.add-container {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add-container label {
+  width: 85%;
+  margin: 1.5vh auto;
+}
+
+.add-container button {
+  font-weight: 600;
+  border: none;
+  max-width: 14vh;
+  height: 14vh;
+  margin-left: 3vw;
+  border-radius: 2vmax;
+  position: relative;
+  background-color: var(--light-bg);
+}
+
+.add-container button svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--main);
+}
+
+.svg-if-no-pswd,
+.svg-if-no-note {
+  place-items: center;
+}
+
+.svg-if-no-pswd svg,
+.svg-if-no-note svg {
+  margin-top: 5vh;
+  max-width: 50vw;
+  max-height: 45vh;
+}
+
+#try-adding-msg,
+#its-empty-msg {
+  fill: var(--text);
+}
+
+/* Generator */
+.generator {
+  position: relative;
+  padding-bottom: 20vh;
+}
+
+.generator .left {
+  margin-left: 12vw;
+}
+
+.categ-txt {
+  font-size: larger;
+  margin-left: -9vw;
+  margin-top: 7.5vmin;
+  margin-bottom: 3vmin;
+}
+
+.param-wrapper-input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1vmin;
+}
+
+.param-wrapper-input h3 {
+  font-weight: 400;
+}
+
+.param-wrapper-input input {
+  margin-left: 3vw;
+  width: 50%;
+}
+
+/* CheckBoxs */
+.param-wrapper-checkbox {
+  margin-top: 1vmin;
+}
+
+.param-wrapper-checkbox span {
+  display: block;
+  margin: auto auto 1vmin;
+}
+
+input[type="checkbox"] {
+  display: none;
+  pointer-events: none;
+}
+
+input[type="checkbox"] + label {
+  cursor: pointer;
+  font-size: 0.8em;
+  display: grid;
+  grid-template-columns: auto 3fr;
+}
+
+input[type="checkbox"] + label svg {
+  width: 2em;
+  stroke: var(--main);
+  stroke-width: 5;
+  fill: var(--light-bg);
+}
+
+input[type="checkbox"] + label svg .box {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  fill: var(--light-bg) !important;
+}
+
+input[type="checkbox"] + label svg .check {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  fill: none;
+}
+
+input[type="checkbox"] + label span {
+  padding-top: 0.3em;
+  margin-left: 0.3em;
+}
+
+input[type="checkbox"]:checked + label .box {
+  stroke-dashoffset: 320;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+input[type="checkbox"]:checked + label .check {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+.reverse .box {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+.reverse .check {
+  stroke-dashoffset: 70;
+  transition: stroke-dashoffset 0.3s linear;
+}
+
+.output-wrapper {
+  display: flex;
+}
+
+.output-wrapper button {
+  margin-left: auto;
+  font-size: medium;
+}
+
+.output-container {
+  width: 100%;
+  margin-top: 2vmin;
+  position: relative;
+  font-size: small;
+}
+
+.line-wrapper {
+  margin-top: 4vh;
+  display: flex;
+}
+
+.line-wrapper + .line-wrapper {
+  margin-top: auto;
+}
+
+.line-wrapper * {
+  width: 19ch;
+}
+
+.generator .right {
+  display: none;
+}
+
+/* Notes */
+.add-note {
+  width: 90%;
+  margin-top: 10vh;
+  margin-left: 5%;
+  margin-bottom: 10vh;
+}
+
+.add-note .line-wrapper {
+  padding-bottom: 2vh;
+  align-items: center;
+}
+
+.add-note .line-wrapper input {
+  max-width: 30ch;
+  flex: 1;
+}
+
+.add-note .line-wrapper button {
+  width: 8ch;
+  margin-left: auto;
+}
+
+/* Health */
+
+.page {
+  display: block;
+}
+
+.score,
+.details {
+  font-size: larger;
+  margin-left: 5vw;
+}
+
+.details {
+  grid-area: details;
+}
+
+.left,
+.healthSVG {
+  margin: 5vh 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left svg {
+  margin-top: 2vh;
+  max-height: 35vh;
+}
+
+.health-nb {
+  position: absolute;
+  color: var(--text);
+  font-size: 13vh;
+  font-weight: 700;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+}
+
+.right {
+  margin: auto;
+  display: grid;
+  row-gap: 1.5vh;
+  column-gap: 4vw;
+  margin-top: 5vmin;
+  place-content: center;
+  grid-template-columns: repeat(2, 38vw);
+  grid-template-areas: "same weak" "solid strong";
+}
+
+.right .line-wrapper {
+  margin: auto;
+}
+
+.right .line-wrapper h3 {
+  font-weight: 400;
+  font-size: small;
+  width: 14ch;
+}
+
+.right .line-wrapper .nb-container {
+  max-width: 5ch;
+  padding: 1vh 1vw;
+  border-radius: 2vh;
+  background-color: var(--light-bg);
+}
+
+/* Settings */
+.settings .container {
+  margin-top: 8vh;
+}
+
+.settings .edit-text {
+  font-size: larger;
+  margin-left: 5vw;
+  margin-bottom: 2vh;
+}
+
+.settings .edit-wrapper {
+  max-width: 96vw;
+  padding-left: 13vw;
+}
+
+.settings .edit-wrapper input {
+  width: 100%;
+  margin-bottom: 1vh;
+}
+.settings .edit-wrapper h3 {
+  font-weight: 400;
+  margin: auto 0;
+  margin-right: 3ch;
+  width: 8ch;
+}
+
+.settings .edit-username {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+
+.settings .edit-password {
+  display: flex;
+}
+
+.settings .theme-wrapper h3 {
+  padding-left: 5vw;
+  font-size: larger;
+}
+
+.settings .themes-container {
+  display: flex;
+  align-items: center;
+  padding-left: 13vw;
+  margin-top: 5vh;
+  justify-content: space-around;
+  max-width: 96vw;
+}
+
+.settings .themes-container svg {
+  width: 27vw;
+  height: auto;
+  transition: transform var(--micro-transition) ease-in;
+}
+
+.settings .themes-container svg:hover {
+  transform: scale(1.05);
+}
+
+/* Media Querries */
+
+/* Phone */
+@media only screen and (max-width: 550px) {
+  .theme-wrapper {
+    margin-top: 6vh;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  main {
+    width: 96vw;
+    padding: 2vmin;
+    position: relative;
+  }
+
+  .add-container {
+    margin-top: 7vh;
+  }
+
+  .add-container button {
+    height: 6vh;
+    width: 20vw;
+    margin: 2vh 7vw auto auto;
+  }
+
+  .add-container button svg {
+    margin-left: auto;
+    width: 5vw;
+  }
+
+  .score,
+  .details {
+    margin-top: 3vh;
+  }
+}
+
+/* PC */
+@media only screen and (min-width: 849px) {
+  main {
+    margin-left: 6vw;
+    height: 100vh;
+    width: 92vw;
+    padding: 2vmin;
+    position: relative;
+  }
+
+  .line-wrapper {
+    margin-top: 0;
+  }
+
+  .line-wrapper + .line-wrapper {
+    margin-top: 0;
+  }
+
+  /* Home */
+  .add-container {
+    width: 75%;
+    height: 20vh;
+    display: grid;
+    margin: 6vmin;
+    align-items: center;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-areas: "name password btn" "website website btn";
+  }
+
+  .add-container .website {
+    width: 110%;
+    margin-left: -5%;
+  }
+
+  .add-container button {
+    width: auto;
+    padding: 1vmin 2vmin;
+  }
+
+  /* Generator */
+  .generator {
+    padding-bottom: 0;
+  }
+
+  .pc-layout {
+    width: 90vw;
+    height: 85vh;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .generator .left {
+    max-width: 40vw;
+  }
+
+  .param-wrapper-input input {
+    width: 75%;
+  }
+
+  .generator .right {
+    display: flex;
+    max-width: 40vw;
+    margin: auto 0;
+  }
+
+  .generator-svg {
+    max-width: 35vw;
+  }
+
+  /* Health */
+  .health .page {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .page {
+    max-height: 80vh;
+  }
+
+  .large-screen {
+    margin-top: 10vh;
+  }
+
+  .score,
+  .details {
+    margin-left: 2vw;
+  }
+
+  .health .left,
+  .health .right {
+    display: flex;
+    width: 45vw;
+    height: 60vh;
+    max-height: 60vh;
+    justify-content: center;
+  }
+
+  .health .left svg {
+    margin-top: 5vh;
+    max-height: 45vh;
+  }
+
+  .health .right {
+    height: auto;
+    margin-top: 10vh;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .health .right .line-wrapper {
+    margin-bottom: 2.5ch;
+    margin-left: 10vw;
+  }
+
+  .health .right h3 {
+    font-size: large;
+  }
+}

@@ -1,0 +1,124 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 3vmin;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+/* .tmprchebcnehzcjn {
+  --main: #d53232;
+
+  --light-bg-dark: #1d2439;
+  --bg-dark: #161c2a;
+  --dark-bg-dark: #111116;
+  --text-dark: #f9f9f9;
+  --navbar-svg-dark: #dddddd;
+} */
+
+*:root {
+  --main: #28D499;
+  --bin: #d53232;
+
+  --light-bg-dark: #24323f;
+  --bg-dark: #0d1b2a;
+  --dark-bg-dark: #050b1e;
+  --text-dark: #f9f9f9;
+  --navbar-svg-dark: #dddddd;
+
+  --light-bg-light: #ffffff;
+  --bg-light: #e0e0e0;
+  --dark-bg-light: #aaaaaa;
+  --text-light: #111111;
+  --navbar-svg-light: #1b1b1b;
+
+  --micro-transition: 225ms;
+
+  --phone-threeshold: 850px;
+}
+
+html {
+  background-color: var(--bg);
+}
+
+*::-webkit-scrollbar {
+  width: 0.35rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--main);
+}
+
+button {
+  padding: 1vmin 2.5vmax;
+  border-radius: 10vmax;
+  border: none;
+  color: var(--text);
+  background-color: var(--main);
+  transition: transform var(--micro-transition) ease-in;
+}
+
+button:hover {
+  transform: scale(1.075);
+}
+
+.no-before::before {
+  display: none;
+}
+
+input {
+  width: 100%;
+  border: none;
+  border-radius: 10vmax;
+  padding: 1vmin 2vmax;
+  color: var(--text);
+  background-color: var(--light-bg);
+}
+
+.title {
+  line-height: 9vmin;
+  font-size: 6vmin;
+  text-align: center;
+}
+
+.svg-main-color {
+  fill: var(--main);
+  stroke: var(--main);
+}
+
+.svg-stroke-main-color {
+  stroke: var(--main);
+}
+
+.svg-dark-color {
+  fill: var(--light-bg);
+}
+
+.svg-bin-color {
+  fill: var(--bin);
+}
+
+.svg-stop-main {
+  stop-color: var(--main);
+}
+
+/* Colors Scheme */
+.dark {
+  --light-bg: var(--light-bg-dark);
+  --bg: var(--bg-dark);
+  --dark-bg: var(--dark-bg-dark);
+  --text: var(--text-dark);
+  --navbar-svg: var(--navbar-svg-dark);
+}
+
+.light {
+  --light-bg: var(--light-bg-light);
+  --bg: var(--bg-light);
+  --dark-bg: var(--dark-bg-light);
+  --text: var(--text-light);
+  --navbar-svg: var(--navbar-svg-light);
+}

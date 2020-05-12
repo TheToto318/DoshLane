@@ -1,0 +1,145 @@
+/* Nav Bar */
+.navbar {
+  z-index: 10;
+  position: fixed;
+  background-color: var(--dark-bg);
+}
+
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 13vh;
+  cursor: pointer;
+  color: var(--text);
+  text-decoration: none;
+  transition: var(--transition-speed);
+}
+
+.nav-link:hover {
+  background: var(--light-bg);
+  color: var(--text);
+}
+
+.link-text {
+  display: inline;
+  position: absolute;
+  left: -50vw;
+  padding-left: 1vw;
+  margin-right: auto;
+  transition: left var(--transition-speed);
+}
+
+.nav-link svg {
+  width: 35px;
+  min-width: 2.5vw;
+  margin: 0 1vw;
+  fill: var(--navbar-svg);
+  stroke: var(--navbar-svg);
+}
+
+.nav-link:hover svg,
+.nav-link svg.active {
+  fill: var(--main);
+  stroke: var(--main);
+}
+
+.logo {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text);
+  background: var(--light-bg);
+  text-transform: uppercase;
+  font-size: 3vw;
+  letter-spacing: 0.2ch;
+  width: 100%;
+}
+
+.logo svg {
+  opacity: 1;
+  transition: opacity var(--transition-speed);
+}
+
+.logo-text {
+  display: inline;
+  position: absolute;
+  left: -50vw;
+  transition: var(--transition-speed);
+}
+
+/* Small screens */
+@media only screen and (max-width: 850px) {
+  .navbar {
+    bottom: 0;
+    width: 100vw;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .navbar-nav {
+    flex-direction: row;
+  }
+
+  .nav-link {
+    margin: 0;
+    justify-content: center;
+  }
+
+  main {
+    margin: 0;
+  }
+}
+
+/* Large screens */
+@media only screen and (min-width: 850px) {
+  /* Normal State */
+  .navbar {
+    top: 0;
+    width: 6vw;
+    height: 100vh;
+  }
+
+  .navbar:hover {
+    width: 20vw;
+    pointer-events: all;
+  }
+
+  .nav-link svg {
+    margin-left: auto;
+    margin-right: 1.5vw;
+  }
+
+  /* Hobver state */
+  .navbar:hover .logo-text {
+    left: 1vw;
+  }
+
+  .navbar:hover .logo svg {
+    opacity: 0;
+  }
+
+  .navbar:hover .link-text {
+    left: 1vw;
+  }
+}
