@@ -294,7 +294,7 @@ def update_password_main(Usermain, Passmain, Newpassmain):
         return False
 
 
-def read_notes(Usermain, Notetitle):
+def read_note_db(Usermain, Notetitle):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
@@ -316,7 +316,7 @@ def read_notes(Usermain, Notetitle):
     return Note
 
 
-def insert_notes(Usermain, Note, Notetitle):
+def insert_note_db(Usermain, Note, Notetitle):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
@@ -336,7 +336,7 @@ def insert_notes(Usermain, Note, Notetitle):
     c.close()
 
 
-def delete_notes(Usermain, Notetitle):
+def delete_note_db(Usermain, Notetitle):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
@@ -348,7 +348,7 @@ def delete_notes(Usermain, Notetitle):
     return True
 
 
-def update_notes(Usermain, Notetitle, Editnote):
+def update_note_db(Usermain, Notetitle, Editnote):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
@@ -368,7 +368,8 @@ def update_notes(Usermain, Notetitle, Editnote):
     c.close()
     return True
 
-def update_notes_title(Usermain, Notetitle, Newnotetitle):
+
+def update_note_title_db(Usermain, Notetitle, Newnotetitle):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
