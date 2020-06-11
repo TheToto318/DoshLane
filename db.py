@@ -32,11 +32,9 @@ def create_user(Usermain, PassMain):
         return False
     else:
         keyaesdecrypt = garydecrypt(ckeyaes)
-        print(keyaesdecrypt)
         PassMainE = PassMain.encode()
         f = Fernet(keyaesdecrypt)
         PassMainEncrypted = f.encrypt(PassMainE)
-        print(PassMainEncrypted)
         c.execute("INSERT INTO User" + Usermain + "(PassMain) VALUES (?)", (PassMainEncrypted,))
         conn.commit()
         c.close()
@@ -296,12 +294,43 @@ def update_password_main(Usermain, Passmain, Newpassmain):
         return False
 
 
+def read_notes(Usermain, Notetitle):
+    try:
+        conn = sqlite3.connect("dashlane.db")
+        c = conn.cursor()
+    except Exception as error:
+        print(error)
+    try:
+        c.execute("SELECT Key FROM User" + Usermain + "")
+        keydecrypt = c.fetchall()
+        keydecrypt = garydecrypt(keydecrypt[0][0])
+    except Exception as error:
+        print(error)
+    c.execute("SELECT Notes FROM User" + Usermain + " WHERE Notetitle=(?)", (Notetitle, ))
+    Note = c.fetchall()
+    Note = Note[0][0]
+    f = Fernet(keydecrypt)
+    Note = f.decrypt(Note)
+    Note = Note.decode("utf-8")
+    print(Note)
+    return Note
+
+
 def insert_notes(Usermain, Note, Notetitle):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
     except Exception as error:
         print(error)
+    try:
+        c.execute("SELECT Key FROM User" + Usermain + "")
+        keydecrypt = c.fetchall()
+        keydecrypt = garydecrypt(keydecrypt[0][0])
+    except Exception as error:
+        print(error)
+    Note = Note.encode()
+    f = Fernet(keydecrypt)
+    Note = f.encrypt(Note)
     c.execute("INSERT INTO User" + Usermain + "(Notes, Notetitle) VALUES (?, ?)", (Note, Notetitle))
     conn.commit()
     c.close()
@@ -325,11 +354,19 @@ def update_notes(Usermain, Notetitle, Editnote):
         c = conn.cursor()
     except Exception as error:
         print(error)
+    try:
+        c.execute("SELECT Key FROM User" + Usermain + "")
+        keydecrypt = c.fetchall()
+        keydecrypt = garydecrypt(keydecrypt[0][0])
+    except Exception as error:
+        print(error)
+    Editnote = Editnote.encode()
+    f = Fernet(keydecrypt)
+    Editnote = f.encrypt(Editnote)
     c.execute("UPDATE User" + Usermain + " SET Notes=(?) WHERE Notetitle=(?)", (Editnote, Notetitle,))
     conn.commit()
     c.close()
     return True
-
 
 def update_notes_title(Usermain, Notetitle, Newnotetitle):
     try:
