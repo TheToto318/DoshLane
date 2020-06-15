@@ -294,7 +294,7 @@ def update_password_main(Usermain, Passmain, Newpassmain):
         return False
 
 
-def read_note_db(Usermain, Notetitle):
+def read_note_db(Usermain):
     try:
         conn = sqlite3.connect("dashlane.db")
         c = conn.cursor()
@@ -306,14 +306,25 @@ def read_note_db(Usermain, Notetitle):
         keydecrypt = garydecrypt(keydecrypt[0][0])
     except Exception as error:
         print(error)
-    c.execute("SELECT Notes FROM User" + Usermain + " WHERE Notetitle=(?)", (Notetitle, ))
+    c.execute("SELECT Notes, Notetitle FROM User" + Usermain + "")
     Note = c.fetchall()
-    Note = Note[0][0]
-    f = Fernet(keydecrypt)
-    Note = f.decrypt(Note)
-    Note = Note.decode("utf-8")
-    print(Note)
-    return Note
+    Notee = Note[2:]
+    final = []
+    for i in range(len(Notee)):
+        out = []
+        Note2 = Notee[i][0]
+        Notetitle = Notee[i][1]
+        f = Fernet(keydecrypt)
+        decrypted = f.decrypt(Note2)
+        decrypted = decrypted.decode("utf-8")
+        out.append(Notetitle)
+        out.append(decrypted)
+        final.append(out)
+    print(final)
+    return final
+
+
+read_note_db('Toto')
 
 
 def insert_note_db(Usermain, Note, Notetitle):
