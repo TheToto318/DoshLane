@@ -42,6 +42,7 @@
   margin: auto;
   display: flex;
   align-items: center;
+  justify-content: space-around;
 }
 
 .dropdown__domain,
@@ -55,12 +56,11 @@
 /* Arrow Animation */
 .arrow {
   position: relative;
-  width: 8vw;
   height: 8vh;
+  min-width: 8vw;
   display: grid;
   place-items: center;
-  flex: 0.225;
-  transform: scale(0.65);
+  transform: scale(0.5);
 }
 
 .arrow-pt1,
@@ -97,7 +97,8 @@
   opacity: 0;
   margin-bottom: 1.5vh;
   align-items: center;
-  justify-content: space-between;
+  min-height: 10vh;
+  justify-content: space-evenly;
   animation: fadeOut 400ms ease-out forwards 175ms;
 }
 
@@ -113,10 +114,6 @@
 .dropdown__bottom h1 {
   font-size: 2.5vh;
   color: var(--text);
-}
-
-.dropdown__bottom .username {
-  margin-left: 5vw;
 }
 
 .dropdown__bottom .dropdown {
@@ -136,24 +133,31 @@
   text-align: justify;
 }
 
-.bin {
-  height: 9vh;
-  width: 15%;
+.bin,
+.edit-icon {
+  min-height: 10vh;
   display: grid;
   place-items: center;
+  overflow: visible;
 }
 
-.bin svg {
-  height: 65%;
-  width: auto;
-  transform: scale(0.9);
+.bin svg,
+.edit-icon svg {
+  margin: 0.5vh;
+  height: 5vh;
+  width: 5vh;
+  margin: auto 1vw;
+  transform: scale(0.95);
   fill: var(--bin);
+  filter: grayscale(0.15);
   transition: filter 225ms ease-in, transform 225ms ease-in;
 }
 
 .bin svg:hover,
-.bin svg:focus {
-  filter: saturate(135%);
+.bin svg:focus,
+.edit-icon svg:hover,
+.edit-icon svg:focus {
+  filter: grayscale(0);
   transform: scale(1);
 }
 

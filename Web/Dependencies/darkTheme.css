@@ -953,7 +953,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
   border: 0;
   border-radius: 0.25em;
   background: initial;
-  background-color: #aaa;
+  background-color: var(--bin);
   color: #fff;
   font-size: 1.0625em;
 }
@@ -990,7 +990,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
   border-radius: 0;
   outline: initial;
   background: 0 0;
-  color: #ccc;
+  color: var(--text);
   font-family: serif;
   font-size: 2.5em;
   line-height: 1.2;
@@ -1030,8 +1030,9 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
   box-sizing: border-box;
   width: 100%;
   transition: border-color 0.3s, box-shadow 0.3s;
-  border: 1px solid #d9d9d9;
-  border-radius: 0.1875em;
+  border: 1px solid var(--main);
+  background-color: var(--light-bg);
+  border-radius: 100vh;
   background: inherit;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
   color: inherit;
@@ -1041,39 +1042,37 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
 .swal2-input.swal2-inputerror,
 .swal2-textarea.swal2-inputerror {
   border-color: #f27474 !important;
-  box-shadow: 0 0 2px #f27474 !important;
 }
 .swal2-file:focus,
 .swal2-input:focus,
 .swal2-textarea:focus {
-  border: 1px solid #b4dbed;
+  border: 1px solid var(--main);
   outline: 0;
-  box-shadow: 0 0 3px #c4e6f5;
 }
 .swal2-file::-webkit-input-placeholder,
 .swal2-input::-webkit-input-placeholder,
 .swal2-textarea::-webkit-input-placeholder {
-  color: #ccc;
+  color: var(--text);
 }
 .swal2-file::-moz-placeholder,
 .swal2-input::-moz-placeholder,
 .swal2-textarea::-moz-placeholder {
-  color: #ccc;
+  color: var(--text);
 }
 .swal2-file:-ms-input-placeholder,
 .swal2-input:-ms-input-placeholder,
 .swal2-textarea:-ms-input-placeholder {
-  color: #ccc;
+  color: var(--text);
 }
 .swal2-file::-ms-input-placeholder,
 .swal2-input::-ms-input-placeholder,
 .swal2-textarea::-ms-input-placeholder {
-  color: #ccc;
+  color: var(--text);
 }
 .swal2-file::placeholder,
 .swal2-input::placeholder,
 .swal2-textarea::placeholder {
-  color: #ccc;
+  color: var(--text);
 }
 .swal2-range {
   margin: 1em auto;
@@ -1242,7 +1241,7 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
   color: #3fc3ee;
 }
 .swal2-icon.swal2-info::before {
-  content: \"i\";
+  content: "i";
 }
 .swal2-icon.swal2-question {
   border-color: #c9dae1;
@@ -1351,11 +1350,11 @@ body.swal2-no-backdrop .swal2-shown.swal2-bottom-right {
   background: var(--main);
 }
 .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step {
-  background: #add8e6;
+  background: var(--light-bg);
   color: #fff;
 }
 .swal2-progress-steps .swal2-progress-step.swal2-active-progress-step ~ .swal2-progress-step-line {
-  background: #add8e6;
+  background: var(--light-bg);
 }
 .swal2-progress-steps .swal2-progress-step-line {
   z-index: 10;

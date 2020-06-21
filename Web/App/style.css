@@ -54,7 +54,6 @@ main section.visible {
 
 .add-container button {
   font-weight: 600;
-  border: none;
   max-width: 14vh;
   height: 14vh;
   margin-left: 3vw;
@@ -66,6 +65,8 @@ main section.visible {
 .add-container button svg {
   width: 100%;
   height: 100%;
+  min-width: 2ch;
+  min-height: 2ch;
   stroke: var(--main);
 }
 
@@ -150,7 +151,7 @@ input[type="checkbox"] + label svg {
 input[type="checkbox"] + label svg .box {
   stroke-dasharray: 320;
   stroke-dashoffset: 0;
-  fill: var(--light-bg) !important;
+  fill: var(--light-bg);
 }
 
 input[type="checkbox"] + label svg .check {
@@ -240,76 +241,6 @@ input[type="checkbox"]:checked + label .check {
   margin-left: auto;
 }
 
-/* Health */
-
-.page {
-  display: block;
-}
-
-.score,
-.details {
-  font-size: larger;
-  margin-left: 5vw;
-}
-
-.details {
-  grid-area: details;
-}
-
-.left,
-.healthSVG {
-  margin: 5vh 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.left svg {
-  margin-top: 2vh;
-  max-height: 35vh;
-}
-
-.health-nb {
-  position: absolute;
-  color: var(--text);
-  font-size: 13vh;
-  font-weight: 700;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  place-items: center;
-}
-
-.right {
-  margin: auto;
-  display: grid;
-  row-gap: 1.5vh;
-  column-gap: 4vw;
-  margin-top: 5vmin;
-  place-content: center;
-  grid-template-columns: repeat(2, 38vw);
-  grid-template-areas: "same weak" "solid strong";
-}
-
-.right .line-wrapper {
-  margin: auto;
-}
-
-.right .line-wrapper h3 {
-  font-weight: 400;
-  font-size: small;
-  width: 14ch;
-}
-
-.right .line-wrapper .nb-container {
-  max-width: 5ch;
-  padding: 1vh 1vw;
-  border-radius: 2vh;
-  background-color: var(--light-bg);
-}
-
 /* Settings */
 .settings .container {
   margin-top: 8vh;
@@ -326,10 +257,19 @@ input[type="checkbox"]:checked + label .check {
   padding-left: 13vw;
 }
 
-.settings .edit-wrapper input {
-  width: 100%;
-  margin-bottom: 1vh;
+.settings .edit-infos {
+  display: grid;
+  margin: 8vh auto 6vh;
+  grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
 }
+
+.settings .edit-infos button {
+  width: 90%;
+  margin-bottom: 2vh;
+  background-color: transparent;
+  border: 0.15rem solid var(--main);
+}
+
 .settings .edit-wrapper h3 {
   font-weight: 400;
   margin: auto 0;
@@ -364,6 +304,7 @@ input[type="checkbox"]:checked + label .check {
 .settings .themes-container svg {
   width: 27vw;
   height: auto;
+  cursor: pointer;
   transition: transform var(--micro-transition) ease-in;
 }
 
@@ -440,7 +381,7 @@ input[type="checkbox"]:checked + label .check {
 
   .add-container .website {
     width: 110%;
-    margin-left: -5%;
+    margin-left: -3.5%;
   }
 
   .add-container button {

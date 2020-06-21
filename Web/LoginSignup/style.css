@@ -92,7 +92,6 @@ form label {
 
 form label input {
   width: 100%;
-  border: none;
   color: var(--text);
   padding: 1vmin 1.5vmax;
   border-radius: 10vmax;
