@@ -234,7 +234,8 @@ def update_user(Usermain, Passmain, New, Website):
     dbpass = f.decrypt(dbpass)
     dbpass = dbpass.decode("utf-8")
     if dbpass == Passmain:
-        c.execute("UPDATE User" + Usermain + " SET User=(?) WHERE Website=(?)", (New, Website,))
+        c.execute("UPDATE User" + Usermain +
+                  " SET User=(?) WHERE Website=(?)", (New, Website,))
         conn.commit()
         c.close()
         return True

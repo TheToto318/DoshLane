@@ -63,11 +63,11 @@ def save_password(username, pswd, website):
 
 
 @eel.expose
-def update_password(i, username, website):
-    pswd = read_user_password(USERNAME, username, website)
-    res = delete_website(USERNAME, PASSMAIN, username, pswd, website)
-    if res is True:
-        eel.deleteDropdown(i, "pswd")
+def update_password(i, username, website, password):
+    res1 = update_password_website(USERNAME, PASSMAIN, password, website)
+    res2 = update_user(USERNAME, PASSMAIN, username, website)
+    if res1 is True and res2 is True:
+        eel.editSuccess()
     else:
         eel.failed(BASIC_FAIL_MSG)
 
@@ -75,15 +75,13 @@ def update_password(i, username, website):
 @eel.expose
 def delete_password(i, username, website):
     pswd = read_user_password(USERNAME, username, website)
-    res = delete_website(USERNAME, PASSMAIN, username, pswd[0][0], website)
+    res = delete_website(USERNAME, PASSMAIN, username, pswd, website)
     if res is True:
         eel.deleteDropdown(i, "pswd")
     else:
         eel.failed(BASIC_FAIL_MSG)
 
 # Notes
-
-
 @eel.expose
 def get_notes_list():
     eel.retrieveNotes(read_notes_db(USERNAME))

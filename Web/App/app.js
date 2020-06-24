@@ -138,7 +138,6 @@ function getPassword(i, model) {
   const box = document.querySelector(`#${model}${i}`);
   const website = box.querySelector(".dropdown__domain").innerHTML;
   const username = box.querySelector(".username").innerHTML;
-  console.log(website, username);
   eel.get_pswd(username, website);
 }
 
@@ -287,7 +286,7 @@ function addNoteBtn() {
 
 // Editing Dropdown
 function edit(i, model) {
-  if (model == "pswd") {
+  if (model === "pswd") {
     Swal.mixin({
       input: "text",
       showCancelButton: true,
@@ -302,10 +301,9 @@ function edit(i, model) {
           if (dontExists(result, "pswd") === true) {
             const website = pswd.querySelector(".dropdown__domain");
             const username = pswd.querySelector(".username");
-            eel.update_password(i, username.innerHTML, website.innerHTML);
             username.innerHTML = result[0];
-            pswd.querySelector(".bin").setAttribute("onclick", `eel.delete_password(${i}, '${result[0]}', '${website}');`);
-            Swal.fire("Updated!", "Your data has been updated.", "success");
+            pswd.querySelector(".bin").setAttribute("onclick", `eel.delete_password(${i}, '${result[0]}', '${website.innerHTML}');`);
+            eel.update_password(i, username.innerHTML, website.innerHTML, result[1]);
           }
         }
       });
@@ -326,7 +324,7 @@ function edit(i, model) {
           if (dontExists(result, "note")) {
             noteTitle.innerHTML = result[0];
             note.querySelector(".content").innerHTML = result[1];
-            note.setAttribute("onclick", `eel.delete_note(${i}, '${result[0]}');`);
+            note.querySelector(".bin").setAttribute("onclick", `eel.delete_note(${i}, '${result[0]}');`);
             eel.update_note(i, oldTitle, result[0], result[1]);
           }
         }
@@ -476,6 +474,7 @@ function successUsername() {
 }
 
 // Utils Function
+eel.expose(editSuccess)
 function editSuccess() {
   Swal.fire("Updated!", "Your data has been updated.", "success");
 }
