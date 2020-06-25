@@ -5,6 +5,22 @@ USERNAME = ""
 PASSMAIN = ""
 BASIC_FAIL_MSG = "Something went wrong. Try again later"
 
+# Redirect & log out
+
+
+@eel.expose
+def logout():
+    global USERNAME, PASSMAIN
+    USERNAME, PASSMAIN = "", ""
+    eel.goBackLogin()
+
+
+@eel.expose
+def check_if_logged_in():
+    global USERNAME, PASSMAIN
+    if (USERNAME == "" or PASSMAIN == ""):
+        eel.goBackLogin()
+
 
 @eel.expose
 def login(data):
@@ -44,7 +60,11 @@ def signup(data):
 
 @eel.expose
 def get_pswds_list():
-    eel.retrievePassword(read_user_website(USERNAME))
+    global USERNAME
+    if USERNAME != "":
+        eel.retrievePassword(read_user_website(USERNAME))
+    else:
+        pass
 
 
 @eel.expose
@@ -82,9 +102,15 @@ def delete_password(i, username, website):
         eel.failed(BASIC_FAIL_MSG)
 
 # Notes
+
+
 @eel.expose
 def get_notes_list():
-    eel.retrieveNotes(read_notes_db(USERNAME))
+    global USERNAME
+    if USERNAME != "":
+        eel.retrieveNotes(read_notes_db(USERNAME))
+    else:
+        pass
 
 
 @eel.expose

@@ -246,6 +246,23 @@ input[type="checkbox"]:checked + label .check {
   margin-top: 8vh;
 }
 
+.settings .logout {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+  transform: scale(0.9);
+  filter: brightness(75%);
+  transition: transform 275ms ease-in, filter 275ms ease-in;
+}
+
+.settings .logout:hover {
+  transform: scale(1);
+  filter: brightness(100%);
+}
+
 .settings .edit-text {
   font-size: larger;
   margin-left: 5vw;

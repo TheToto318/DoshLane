@@ -9,6 +9,7 @@ body {
   height: 100vh;
   display: flex;
   top: 0;
+  padding: 0 10vw;
   position: sticky;
   flex-direction: column;
   align-items: center;

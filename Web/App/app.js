@@ -1,8 +1,11 @@
 // INIT
+eel.check_if_logged_in();
+setTimeout(null, 125)
 let theme = localStorage.getItem("theme");
 const body = document.querySelector("body");
 const Pbtn = document.getElementById("changePswd");
 const Ubtn = document.getElementById("changeUsrname");
+const logoutBtn = document.getElementById("logout");
 
 if (theme) {
   body.classList.add(theme);
@@ -21,6 +24,7 @@ if (theme) {
 
 Pbtn.addEventListener("click", changePassword);
 Ubtn.addEventListener("click", changeUsername);
+logoutBtn.addEventListener("click", logout);
 
 // eel calls
 eel.get_pswds_list();
@@ -37,6 +41,28 @@ let charsToUse = {
   caps: false,
   spaces: false,
 };
+
+// Route Guard
+eel.expose(goBackLogin);
+function goBackLogin() {
+  document.location = "./../LoginSignup/index.html";
+}
+
+function logout() {
+  Swal.fire({
+    title: "Are you sure?",
+    text: "Do you really want to logout",
+    icon: "warning",
+    showCancelButton: true,
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, logout!",
+  }).then((result) => {
+    if (result.value) {
+      Swal.fire("Logout!", "You successfully logged out of your account", "success")
+      .then(() => eel.logout());
+    }
+  });
+}
 
 // SVG
 function showEmptySvg() {
@@ -474,7 +500,7 @@ function successUsername() {
 }
 
 // Utils Function
-eel.expose(editSuccess)
+eel.expose(editSuccess);
 function editSuccess() {
   Swal.fire("Updated!", "Your data has been updated.", "success");
 }
